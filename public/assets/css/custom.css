@@ -1,0 +1,86 @@
+.cards{
+    font-family: " Helvetica, sans-serif" !important;
+
+    transition:  transform 0.2s ease-in-out;
+    padding:20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+
+}
+.bounce {
+	animation: bounce 9s infinite;
+	-webkit-animation: bounce 2s infinite;
+	-moz-animation: bounce 2s infinite;
+	-o-animation: bounce 2s infinite;
+}
+ 
+@-webkit-keyframes bounce {
+	0%, 20%, 50%, 80%, 100% {-webkit-transform: translateY(0);}	
+	40% {-webkit-transform: translateY(-30px);}
+	60% {-webkit-transform: translateY(-15px);}
+}
+ 
+@-moz-keyframes bounce {
+	0%, 20%, 50%, 80%, 100% {-moz-transform: translateY(0);}
+	40% {-moz-transform: translateY(-30px);}
+	60% {-moz-transform: translateY(-15px);}
+}
+ 
+@-o-keyframes bounce {
+	0%, 20%, 50%, 80%, 100% {-o-transform: translateY(0);}
+	40% {-o-transform: translateY(-30px);}
+	60% {-o-transform: translateY(-15px);}
+}
+@keyframes bounce {
+	0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+	40% {transform: translateY(-30px);}
+	60% {transform: translateY(-15px);}
+}
+@media(max-width:700px){
+   .cards form{
+      width:100%;
+   }
+    
+}
+.cards form{
+    width:100%;
+}
+.cards form h1 p{
+    text-align: center;
+    color:rgba(0, 0, 0, 0.87);
+}
+.cards form input{
+    margin:20px 0px;
+    padding:9px 15px;
+    width:  100%;
+    border: 1px solid #ced4da;
+}
+
+.cards input:focus{
+    outline: none !important;
+}
+.cards input::placeholder{
+    font-size: 14px;
+}
+.nav-tabs{
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 14px;
+
+}
+.nav-tabs li{
+    padding:10px;
+}
+.nav-tabs li a{
+    text-decoration: none;
+    padding:10px;
+    color:#747575;
+}
+.nav-tabs li a:hover{
+    color:rgb(10, 10, 10);
+    background-color: rgb(231, 229, 229);
+    padding:10px;
+}
