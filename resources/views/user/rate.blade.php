@@ -150,7 +150,7 @@
         &copy; Copyright <strong><span>Blizexchange</span></strong>. All Rights Reserved
       </div>
       <div class="credits">
-        Designed by <a href="#">voke  08127352446</a>
+        Designed by <a href="#">voke new 08127352446</a>
       </div>
     </div>
   </footer><!-- End Footer -->
