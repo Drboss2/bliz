@@ -38,8 +38,12 @@ class DashboardController extends Controller
         ->join('giftcards', 'giftcard_details.giftcards_id', '=', 'giftcards.id')
         ->select('giftcard_details.*', 'giftcards.*')
         ->get();
-            
-        $btc= DB::table('cryptoassets')->get();
+
+        $btc= DB::table('crypto_details')
+        ->join('cryptoassets', 'crypto_details.cryptoassets_id', '=', 'cryptoassets.id')
+        ->select('crypto_details.*', 'cryptoassets.*')
+        ->get();
+
         return view('user.rate',[
             'data'=>$data,
             'btc' => $btc,

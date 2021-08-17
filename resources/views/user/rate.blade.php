@@ -46,14 +46,21 @@
                                 <thead class="bg-dark text-light">
                                     <tr>
                                         <th>Asset name</th>
+                                        <th>type</th>
+                                        <th>Denomination</th>
                                         <th>Rate</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                 @foreach($btc as $val)
+                             
                                     <tr>
                                         <td>{{$val->assets}}</td>
-                                        <td>₦{{$val->price}}</td>
+                                        <td>{{$val->crypto_name}}</td>
+                                        <td>{{$val->min}}-{{$val->max}}</td>
+                                        <td>₦{{$val->rate}}</td>
+
+
                                     </tr>
                                 @endforeach
                                 </tbody>
@@ -143,7 +150,7 @@
         &copy; Copyright <strong><span>Blizexchange</span></strong>. All Rights Reserved
       </div>
       <div class="credits">
-        Designed by <a href="https://bootstrapmade.com/">Techhub</a>
+        Designed by <a href="#">voke  08127352446</a>
       </div>
     </div>
   </footer><!-- End Footer -->
