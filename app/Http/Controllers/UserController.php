@@ -1,12 +1,11 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 use App\Mail\SendMail;
-use App\Mail\loginMail;
+use App\Mail\LoginMail;
 use App\Mail\Verified;
 use Illuminate\Support\Facades\Mail;
 use App\Models\User;
@@ -59,6 +58,7 @@ class UserController extends Controller
             'true'=> $request->session()->get('user_id'),
         ]);
     }
+
     public function login(Request $request){
         $this->validate($request,[
             'email'    => 'required',
@@ -70,18 +70,20 @@ class UserController extends Controller
        if(!auth()->attempt(['email'=> $email,'password'=> $password,'isverified'=>'true'])){
              return response()->json(['status'=> 'invalid']);
         }else{
-            if(auth()->user()->isadmin == 1){
+            if(auth()->user()->isadmin == 1 || 2){
                return response()->json(['status'=> 'admin_login']);
             }else{
-                Mail::to($email)->queue(new loginMail());
-               return response()->json(['status'=> 'login']);
+
+                $name ="Dear " .auth()->user()->name. " You just login to blizexchange";
+
+                Mail::to($email)->queue(new LoginMail($name));
+
+                return response()->json(['status'=>'login']);
             }
         }
-    
     }
 
     public function verified(){ // after successful sign ups and pin creation
         return view('user.verified');
     }
-
 }
