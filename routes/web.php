@@ -166,10 +166,6 @@ Route::get('/refresh',function(){
     return csrf_token();
 });
 
-Route::get('generate', function (){
-    \Illuminate\Support\Facades\Artisan::call('storage:link');
-    echo 'ok';
-});
 Route::get('up', function (){
     \Illuminate\Support\Facades\Artisan::call('up');
     echo 'ok';
