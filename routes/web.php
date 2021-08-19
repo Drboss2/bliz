@@ -174,14 +174,14 @@ Route::get('down', function (){
     \Illuminate\Support\Facades\Artisan::call('down');
     echo 'ok';
 });
-Route::get('/clear', function() {
+// Route::get('/clear', function() {
 
-   Artisan::call('cache:clear');
-   Artisan::call('config:clear');
-   Artisan::call('config:cache');
-   Artisan::call('view:clear');
+//    Artisan::call('cache:clear');
+//    Artisan::call('config:clear');
+//    Artisan::call('config:cache');
+//    Artisan::call('view:clear');
 
-   return "Cleared!";
+//    return "Cleared!";
 
-});
+// });
 

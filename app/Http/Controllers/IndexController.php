@@ -8,34 +8,27 @@ use App\Models\Trade;
 use App\Models\Subscribe;
 use App\Mail\SendMail;
 use Illuminate\Support\Facades\Mail;
+use DB;
 
 class IndexController extends Controller
 {
     public function index(){
        $user = User::all()->count();
        $trade = Trade::all()->count();
+       
+
+        $btc= DB::table('crypto_details')
+        ->join('cryptoassets', 'crypto_details.cryptoassets_id', '=', 'cryptoassets.id')
+        ->select('crypto_details.*', 'cryptoassets.*')
+        ->get();
 
        return view('user.index',[
            'user'=> $user,
-           'trade'=>$trade
+           'trade'=>$trade,
+           'btc'=> $btc,
        ]);
     }
 
-    public function Contact(Request $request){
-       $name    = $request->name;
-       $email   = $request->p_email;  
-       $subject = $request->$subject;
-       $message = $request->message;
-       
-       Mail::send('Html.view', $data, function ($message) {
-           $message->from('john@johndoe.com', 'John Doe');
-           $message->sender('john@johndoe.com', 'John Doe');
-           $message->to('john@johndoe.com', 'John Doe');;
-           $message->replyTo('john@johndoe.com', 'John Doe');
-           $message->subject('Subject');
-          
-       });
-    }
 
     public function newsLetters(Request $request){ // store subscribers in db
         $this->validate($request,[

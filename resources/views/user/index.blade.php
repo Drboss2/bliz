@@ -7,7 +7,13 @@
       <a href="/" class="logo d-flex align-items-center">
          <img style="width:70px;" src="assets/img/app5.png" alt="">
       </a>
-
+        <marquee style="font-weight:bold;font-family:Monospace">
+        Our rates are:
+        @foreach($btc as $val)
+            <td>{{$val->assets}}</td>
+            <td>NGN{{$val->rate}}</td>,
+        @endforeach
+        </marquee>
       <nav id="navbar" class="navbar">
         <ul>
           <li><a class="nav-link scrollto active" href="/">Home</a></li>
@@ -463,7 +469,7 @@
         &copy; Copyright <strong><span>Blizexchange</span></strong>. All Rights Reserved
       </div>
       <div class="credits">
-        Designed by <a href="https://bootstrapmade.com/">Techhouse</a>
+        <!-- Designed by <a href="">Te</a> -->
       </div>
     </div>
   </footer><!-- End Footer -->

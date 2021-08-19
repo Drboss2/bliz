@@ -70,6 +70,7 @@ class CryptoController extends Controller
         $data = array(
             'm'=> auth()->user()->name.' Your ' .$asset_name.' trade with order id of ' . $order_id. ' Has been successful placed',
         );
+        
         Mail::to(auth()->user()->email)->queue(new cardMail($data));
 
         return redirect()->route('user.dashboard')->with("crypto_success", "Your $asset_name order has been placed");

@@ -27,10 +27,9 @@ class PasswordResetController extends Controller
         if($data < 1){
             return 'notfound';
         }else{
-            
             Mail::to($email)->send(new Pass($msg,$email));
 
-                return 'sent';
+            return 'sent';
         }
 
     }

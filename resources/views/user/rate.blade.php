@@ -42,36 +42,33 @@
                 <div class="row gx-0">
                     <div class="col-lg-12">
                         <div class="table-responsive">
-                          <table class="table">
+                          <table class="table" style="font-size:13px">
                                 <thead class="bg-dark text-light">
                                     <tr>
-                                        <th>Asset name</th>
-                                        <th>type</th>
-                                        <th>Denomination</th>
+                                        <th>Assets</th>
+                                        <th>Type</th>
+                                        <th>Den</th>
                                         <th>Rate</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                 @foreach($btc as $val)
-                             
                                     <tr>
                                         <td>{{$val->assets}}</td>
                                         <td>{{$val->crypto_name}}</td>
                                         <td>{{$val->min}}-{{$val->max}}</td>
                                         <td>₦{{$val->rate}}</td>
-
-
                                     </tr>
                                 @endforeach
                                 </tbody>
                             </table>
-                            <table class="table">
+                            <table class="table" style="font-size:12px">
                                 <thead class="bg-dark text-light">
                                     <tr>
                                         <th>Country</th>
                                         <th>Card name</th>
                                         <th>Card type</th>
-                                        <th>Denomination</th>
+                                        <th>Den</th>
                                         <th>Rate</th>
                                     </tr>
                                 </thead>

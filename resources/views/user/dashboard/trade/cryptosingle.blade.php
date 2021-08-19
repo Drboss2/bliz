@@ -102,7 +102,7 @@
                                             <b><span style="font-weight:bold">Please make sure you transfer the exact amount to avoid payment delinced</span></b><br>
 
                                             <input style="color:blue;font-size:23px;width:80%;border:none;outline:none" id="copy" type="text" readonly>
-                                            <a onclick="myFunction()"  href="#"><span class="far fa-copy far-lg"></span></a>
+                                            <a onclick="myFunction()"  href="javascript:void(0)"><span class="far fa-copy far-lg"></span></a>
                                             <br>
                                             <br>
                                             <button type="button" class='back3 btn btn-primary btn-sm'>Prev</button>
