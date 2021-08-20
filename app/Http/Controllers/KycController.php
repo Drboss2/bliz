@@ -12,7 +12,7 @@ class KycController extends Controller
         $this->middleware(['auth']);
     }
     public function index(){
-        $d = Kyc::all();
+        $d = Kyc::where('user_id',auth()->user()->id)->get();
         return view('user.dashboard.kyc.index',[
             'data'=> $d,
         ]);
@@ -31,6 +31,7 @@ class KycController extends Controller
         ]);
         $data = new Kyc;
         $data->user_id    = auth()->user()->id;
+        $data->email      = auth()->user()->email;
         $data->first_name = $request->first_name;
         $data->last_name  = $request->last_name;
         $data->phone      = $request->phone;
@@ -44,7 +45,7 @@ class KycController extends Controller
         $data->back_file   = '12'.time().'.'.$file2->getClientOriginalExtension();
 
         $file1->storeAS('public/images',$data->front_file);
-        $file2->storeAS('public/images',$data->front_file);
+        $file2->storeAS('public/images',$data->back_file);
 
         $data->status      = 'pending';
 

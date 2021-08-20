@@ -35,7 +35,6 @@ class TradeController extends Controller
         Trade::where('id',$id)->update(['status'=>'paid']);
         $u = User::where('id',$user_id)->get();
 
-
         $user           = new Transactions;
         $user->user_id  = $user_id;
         $user->type     = 'wallet';
@@ -45,7 +44,6 @@ class TradeController extends Controller
         $user->status   = 'successful';
         $user->save();
 
-        
         $data = array(
             'm'=> $u[0]->name.' Your Internal wallet with has been credited with NGN' .$amount
         );
@@ -54,27 +52,23 @@ class TradeController extends Controller
 
         return 'trade status updated';
     }
-
     public function declinedTrade($id){
         $data = Trade::where('id',$id)->get();
         $user_id = $data[0]->user_id;
         $u = User::where('id',$user_id)->get();
 
-       $user = Trade::where('id',$id)->update(['status'=>'failed']);
+        $user = Trade::where('id',$id)->update(['status'=>'failed']);
 
-       $data = array(
+        $data = array(
             'm'=> $u[0]->name. ' Your Trade was Declined'
         );
-
-       Mail::to($u[0]->email)->send(new cardMail($data));
-
-       return 'trade status updated';
+        Mail::to($u[0]->email)->send(new cardMail($data));
+        return 'trade status updated';
     }
 
     public function allPaidTrade(){
        $data = Trade::where('status','paid')->latest()->paginate(10);
-
-       return view('admin.paid',[
+        return view('admin.paid',[
            'data'=>$data,
        ]); 
     }
@@ -92,11 +86,6 @@ class TradeController extends Controller
         $header = [
             'Content-Type:  Application/image',
         ];
-
-    //return Storage::disk('public')->get(storage_path('images/'.$file->assets_image));
-
-
        return Storage::download(storage_path('images/'.$file->assets_image,$file->assets_name,$header));
-
     }
 }

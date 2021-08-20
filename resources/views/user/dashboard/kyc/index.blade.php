@@ -61,54 +61,12 @@
                                         <hr>
                                         <p id="geterror"></p>
                                         @if(count($data) > 0)
-                                            @if(auth()->user()->id  != $data[0]->user_id)
-                                                <form id="id" enctype="multipart/form-data" >
-                                                    <div class="form-group">
-                                                        <label for="">First Name</label>
-                                                        <input type="text" class="form-control" name="first_name" id="first_name">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="">Last Name</label>
-                                                        <input type="text" class="form-control" name="last_name" id="last_name">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="">Phone</label>
-                                                        <input type="text" class="form-control" name="phone" id="phone">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="">State</label>
-                                                        <input type="text" class="form-control" name="state" id="state">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="">Gender</label>
-                                                        <select type="text" class="form-control" name="gender" id="gender">
-                                                            <option>Male</option>
-                                                            <option>Female</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="">Font of ID</label>
-                                                        <input type="file" class="form-control" name="front_file" id="front_file">
-                                                        <img style="width:60px;height:60px;" class="img-fluid "id="imgPreview" src="" alt="">
-
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="">Back of ID</label>
-                                                        <input type="file" class="form-control" name="back_file" id="back_file">
-                                                        <img style="width:60px;height:60px;" class="img-fluid "id="imgPreview1" src="" alt="">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <button type="submit" class='btn btn-dark btn-sm' name="submit" id="submit">Submit</button>
-                                                    </div>
-                                                </form>
-                                            @else
-                                                @if($data[0]->status =='pending')
-                                                    <p>Your Kyc is awaiting Verification
-                                                        <div class="spinner-grow spinner-grow-sm"></div>
-                                                    </p> 
-                                                @elseif($data[0]->status == 'success')
-                                                    <p class='bg-success'>Your Kyc is Verified</p> 
-                                                @endif
+                                            @if($data[0]->status =='pending')
+                                                <p>Your Kyc is awaiting Verification
+                                                    <div class="spinner-grow spinner-grow-sm"></div>
+                                                </p> 
+                                            @elseif($data[0]->status == 'success')
+                                                <p class='bg-success'>Your Kyc is Verified</p> 
                                             @endif
                                         @else
                                             <form id="id" enctype="multipart/form-data" >
@@ -221,9 +179,6 @@ label,.profile-form p{
 
             form.append('front_file', $('input[type=file]')[0].files[0]);
             form.append('back_file', $('input[type=file]')[1].files[0]);
-
-            console.log(form.get('back_file'))
-             console.log(form.get('front_file'))
 
             $.ajax({
                 url:"{{route('kyc.create')}}",

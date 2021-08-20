@@ -71,9 +71,15 @@
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
           <span class="dropdown-item dropdown-header">My account</span>
           <div class="dropdown-divider"></div>
-          <a href="/kyc" class="dropdown-item">
-            <i class="fas fa-church mr-2"></i>KYC
-          </a>
+          @if(auth()->user()->isadmin == 1 || auth()->user()->isadmin == 2)
+            <a href="{{route('admin.kyc')}}" class="dropdown-item">
+                <i class="fas fa-church mr-2"></i>Manage Kyc
+            </a>
+          @else
+            <a href="/kyc" class="dropdown-item">
+                <i class="fas fa-church mr-2"></i>KYC
+            </a>
+          @endif
            <div class="dropdown-divider"></div>
           <a href="/settings" class="dropdown-item">
             <i class="fas fa-circle  mr-2"></i>Settings
@@ -257,10 +263,22 @@
                         </li>
                     </li>
                     <li class="nav-header user-panel mb-2">Admin Area</li>
-                         <li class="nav-item">
+                        <li class="nav-item">
                             <a href="/admin/add" class="nav-link  @yield('active-admin_admin')">
-                            <i class="nav-icon fas fa-gift"></i>
-                            <p> Manage Admin</p>
+                                <i class="nav-icon fas fa-user-shield"></i>
+                                <p> Manage Admin</p>
+                            </a>
+                        </li>
+                         <li class="nav-item">
+                            <a href="/admin/kyc" class="nav-link  @yield('active-admin_kyc')">
+                                <i class="nav-icon fas fa-user-lock"></i>
+                                <p> Manage Kyc</p>
+                            </a>
+                        </li>
+                         <li class="nav-item">
+                            <a href="{{route('admin.kyc.successkyc')}}" class="nav-link  @yield('active-admin_kyc_success')">
+                                <i class="nav-icon fas fa-user-secret"></i>
+                                <p> Approved Kyc</p>
                             </a>
                         </li>
                     </li>

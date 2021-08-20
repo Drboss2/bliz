@@ -15,6 +15,7 @@ class CreateKycTable extends Migration
         Schema::create('kyc', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->string('email');
             $table->string('first_name');
             $table->string('last_name');
             $table->string('phone');

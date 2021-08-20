@@ -15,6 +15,7 @@ use App\Http\Controllers\SettingController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\KycController;
 
+use App\Http\Controllers\Admin\KycaController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\TradeController;
 use App\Http\Controllers\Admin\WithdrawalController;
@@ -41,7 +42,13 @@ Route::middleware(['isCeo'])->group(function () {
     Route::get('/admin/crypto/{id}',[CryptoassetsController::class,'getAdress']);
     Route::get('/admin/crypto',[CryptoassetsController::class,'index']);
 });
-// admin uses
+
+// admin uses kyc
+Route::get('/admin/kyc/allsuccess',[KycaController::class,'getApprovedKyc'])->name('admin.kyc.successkyc');
+Route::post('/admin/kyc/delete',[KycaController::class,'removekyc'])->name('admin.kyc.delete');
+Route::post('/admin/kyc/approve',[KycaController::class,'approvekyc'])->name('admin.kyc.approve');
+Route::get('/admin/kyc',[KycaController::class,'index'])->name('admin.kyc');
+
 Route::get('/admin/pin/{email}',[UsersController::class,'getUserPin']);
 Route::get('/admin/pin',[UsersController::class,'checkforPin']);
 Route::get('/admin/user',[UsersController::class,'index']);

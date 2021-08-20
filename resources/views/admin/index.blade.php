@@ -26,6 +26,14 @@
     <section class="content">
         <div class="container-fluid">
             <div class="row">
+            @if($kyc > 0)
+                <div class="col-lg-12">
+                    <div class="alert alert-warning alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        <strong>Attention!!</strong> You have {{$kyc}} Kyc Application  Request to attend to, Click <a  href="admin/kyc">here</a> now
+                    </div>
+                </div>
+            @endif
             @if($pending > 0)
                 <div class="col-lg-12">
                     <div class="alert alert-danger alert-dismissible">
