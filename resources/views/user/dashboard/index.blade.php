@@ -3,23 +3,22 @@
  @section('page-title','Blizexchange Dashboard')
  @section('active-mode','active')
  <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
     <div class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
                     <h1 class="m-0">Dashboard</h1>
                 </div><!-- /.col -->
-                    <div class="col-sm-6">
-                            <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="/dashboard">Home</a></li>
-                            <li class="breadcrumb-item active">Dashboard</li>
-                            </ol>
-                    </div><!-- /.col -->
-                </div><!-- /.row -->
-            </div><!-- /.container-fluid -->
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                       <li class="breadcrumb-item"><a href="/dashboard">Home</a></li>
+                       <li class="breadcrumb-item active">Dashboard</li>
+                    </ol>
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
     </div>
-     <section class="content">
+    <section class="content">
         <div class="container-fluid">
             <!-- Small boxes (Stat box) -->
             <div class="col-lg-12">
@@ -28,41 +27,54 @@
             </div>
             <div class="row">
                 <div class="col-lg-12">
-                <p style="color: rgb(94, 114, 228); margin-bottom: 0.5rem; font-family: inherit;font-weight: 600;line-height: 1.5;">Welcome {{auth()->user()->name}},</p>
+                    <p style="color: rgb(94, 114, 228); margin-bottom: 0.5rem; font-family: inherit;font-weight: 600;line-height: 1.5;">Welcome   {{auth()->user()->name}},</p>
                     @if(!auth()->user()->kyc)
-                          <p style="color: rgb(94, 114, 228); margin-bottom: 0.5rem; font-family: inherit;font-weight: 900;line-height: 1.5;"><a href="/kyc">Click Here for KYC Verification,</a></p>
-                   @elseif(auth()->user()->kyc->status == "success")
-                           <p class='bg-success p-2'>Your Kyc is Verified</p> 
+                        <p style="color: rgb(94, 114, 228); margin-bottom: 0.5rem; font-family: inherit;font-weight: 900;line-height: 1.5;"><a href="/kyc">Click Here for KYC Verification,</a></p>
+                    @elseif(auth()->user()->kyc->status == "success")
+                        <p class='bg-success p-2'>Your Kyc is Verified</p> 
                     @else
                             <p style="color: rgb(94, 114, 228); margin-bottom: 0.5rem; font-family: inherit;font-weight: 900;line-height: 1.5;"><a href="/kyc">Click Here for KYC Verification,</a></p>
                     @endif
-                <p class="alert alert-warning">Click <a href="/wallet">Here</a> to Wallet Activities</p>
-                    <div class="row">
-                        @if(count($crypto) > 0)
-                            @foreach($crypto as $c)
-                                <div class="col-lg-4 col-12">
-                                    <!-- small box -->
-                                    <div class="card">
-                                        <h4 class="card-header">{{$c->assets}}</h4>
-                                        <div class="card-body">
-                                            <h5 class="text-center"><img style="max-height:70px;" class='img-fluid' src="{{url('storage/images/'.$c->image)}}"></h5>
-                                            <div class="card-footer text-center" ><a class="btn btn-dark btns-sm btn-block" href="/crypto">Trade</a>
-                                            </div>
-                                        </div>
-                                        <!-- <div class="icon">
-                                            <i class="fas fa-wallet"></i>
-                                        </div> -->
-                                    </div>
-                                </div>
-                            @endforeach
-                        @endif
+                    <p class="alert alert-warning">Click <a href="/wallet">Here</a> to Wallet Activities</p>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div id="pro1" class="col-lg-4 col-sm-4 col-4 text-center" >
+                    <div class='bg-primary p-3 text-bold' style="border-radius:10px;font-size:16px;">
+                        Naira  Wallet
+                    </div>
+                </div>
+                <div id="pro1" class="col-lg-4 col-sm-4 col-4 text-center">
+                    <div class='bg-primary p-3 text-bold'style="border-radius:10px;font-size:16px;">
+                        Bitcoin  Wallet
+                    </div>
+                </div>
+                <div id="pro1" class="col-lg-4 col-sm-4 col-4 text-center">
+                    <div class='bg-default p-3 text-bold'  style="border-radius:10px;font-size:16px;background:white">
+                        Ethereum Wallet
+                    </div>
+                </div>
+                <div class="col-lg-12 mt-3">
+                    <div class="card">
+                        <div class="card-body">
+                          <button class="btn btn-primary btn-block text-center">View Bitcoin Wallet</button>
+                             <hr>
+                            <span style="font-size:17px;font-weight:bolder">Address :</span><span style='style="font-size:17px;font-weight:bolder'> bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh </span> <a href="javascript:void(0)"><span class="far fa-copy far-lg"></span></a><br>
+                            <span style="font-size:17px;font-weight:bolder">Balance :</span>BTC<span style="font-size:17px;font-weight:bolder;color:green">0.000($0.00)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                @if(count($crypto) > 0)
+                    @foreach($crypto as $c)
                         <div class="col-lg-4 col-12">
                             <!-- small box -->
                             <div class="card">
-                                <h4 class="card-header">Giftcards</h4>
+                                <h4 class="card-header">{{$c->assets}}</h4>
                                 <div class="card-body">
-                                    <h5 class="text-center"><img style="max-height:70px;" class='img-fluid' src="{{('assets/img/cards.svg')}}"></h5>
-                                    <div class="card-footer text-center" ><a class="btn btn-dark btns-sm btn-block" href="/giftcard">Trade</a>
+                                    <h5 class="text-center"><img style="max-height:70px;" class='img-fluid' src="{{url('storage/images/'.$c->image)}}"></h5>
+                                    <div class="card-footer text-center" ><a class="btn btn-dark btns-sm btn-block" href="/crypto">Trade</a>
                                     </div>
                                 </div>
                                 <!-- <div class="icon">
@@ -70,6 +82,20 @@
                                 </div> -->
                             </div>
                         </div>
+                    @endforeach
+                @endif
+                <div class="col-lg-4 col-12">
+                    <!-- small box -->
+                    <div class="card">
+                        <h4 class="card-header">Giftcards</h4>
+                        <div class="card-body">
+                            <h5 class="text-center"><img style="max-height:70px;" class='img-fluid' src="{{('assets/img/cards.svg')}}"></h5>
+                            <div class="card-footer text-center" ><a class="btn btn-dark btns-sm btn-block" href="/giftcard">Trade</a>
+                            </div>
+                        </div>
+                        <!-- <div class="icon">
+                            <i class="fas fa-wallet"></i>
+                        </div> -->
                     </div>
                 </div>
             </div>

@@ -15,7 +15,7 @@ class DashboardController extends Controller
         $this->middleware('auth')->except('rateIndex');
     }
     public function index(){
-        $crypto = Cryptoasset::limit(2)->get(); 
+        $crypto = Cryptoasset::limit(2)->orderBy('assets','desc')->get(); 
 
         $wallet =   DB::table('transactions')->where(['user_id' => auth()->user()->id,'type'=> 'wallet'])->count();
         $trade   =  Trade::latest()->where(['user_id'=>auth()->user()->id])->paginate(10);

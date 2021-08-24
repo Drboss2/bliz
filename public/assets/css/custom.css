@@ -38,7 +38,7 @@
 	40% {transform: translateY(-30px);}
 	60% {transform: translateY(-15px);}
 }
-@media(max-width:700px){
+@media(max-width:40px){
    .cards form{
       width:100%;
    }

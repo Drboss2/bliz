@@ -47,9 +47,7 @@ class UserController extends Controller
 
         $name = 'Click the above button to activiated your account to have access to the system';
 
-        // Mail::to($request->email)->queue(new SendMail($user->name));
         Mail::to($request->email)->queue(new Verified($name));
-
 
         $request->session()->put('user_id', $user->id);
         $request->session()->put('email', $request->email);
