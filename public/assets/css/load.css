@@ -21,3 +21,17 @@
     font-family: "Sofia Pro, Helvetica, sans-serif" !important;
 
 }
+
+.custom{
+    font-weight: 500;
+    font-size: 0.875rem;
+    box-shadow: rgba(50, 50, 93, 0.11) 0px 4px 6px, rgba(0, 0, 0, 0.08) 0px 1px 3px;
+    padding: 0.75rem 1rem;
+    transition: all 0.15s ease 0s;
+    cursor: pointer;
+}
+
+.white{
+   background-color: white;
+}
+

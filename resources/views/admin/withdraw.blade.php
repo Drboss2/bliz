@@ -52,7 +52,7 @@
                                                 @foreach($data as $val)
                                                     <tr>
                                                         <td>{{$val->trans_id}}</td>
-                                                        <td>1312322</td>
+                                                        <td>{{$val->phone}}</td>
                                                         <td>{{$val->bank}}</td>
                                                         <td>{{$val->account_no}}</td>
                                                         <td>{{$val->account_name}}</td>

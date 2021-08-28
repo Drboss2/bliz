@@ -9,7 +9,8 @@ class Trade extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id','order_id','assets_image','assets_name','assets_type','price','denomination','expected_amount','status'];
+    protected $fillable = ['user_id','order_id','assets_image',
+    'assets_name','assets_type','price','denomination','expected_amount','status','admin','admin_id'];
 
     public $timestamps = true;
 }

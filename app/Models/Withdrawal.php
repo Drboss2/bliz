@@ -11,6 +11,7 @@ class Withdrawal extends Model
 
     protected $fillable=[
         'user_id',
+        'phone',
         'trans_id',
         'email',
         'bank',
@@ -18,6 +19,8 @@ class Withdrawal extends Model
         'account_name',
         'amount',
         'status',
+        'admin',
+        'admin_id',
     ];
     public $timestamps = true;
 

@@ -73,7 +73,9 @@ class WalletController extends Controller
                 if($request->session()->has('a')){
                     $table               = new Withdrawal;
                     $table->user_id      = auth()->user()->id;
-                    $table->trans_id     = random_int(1111111,9999999);
+                    $table->phone        = auth()->user()->phone;
+
+                    $table->trans_id     = random_int(11111111,99999999);
                     $table->email        = auth()->user()->email;
                     $table->bank         = $request->session()->get('bank');
                     $table->account_no   = $request->session()->get('account_no');
@@ -82,16 +84,12 @@ class WalletController extends Controller
                     $table->status       = 'pending';
                     $table->save();
 
-                    // $timer            = new Timer;
-                    // $timer->user_id   = auth()->user()->id;
-                    // $timer->date      = Carbon::today();
-                    // $timer->save();
-
                     Nairawallet::where('user_id',auth()->user()->id)->decrement('amount',$request->session()->get('a'));
 
                     DB::table('transactions')->insert([
                         'user_id'  => auth()->user()->id,
-                        'order_id' => random_int(1111111111,9999999999),
+                        'email'  => auth()->user()->email,
+                        'order_id' => random_int(11111111,99999999),
                         'type'     => 'wallet',
                         'reason'   => 'withdrawal',
                         'amount'   =>  $request->session()->get('a'),
@@ -114,7 +112,9 @@ class WalletController extends Controller
                 if($request->session()->has('a')){
                     $table               = new Withdrawal;
                     $table->user_id      = auth()->user()->id;
-                    $table->trans_id     = random_int(1111111,9999999);
+                    $table->phone        = auth()->user()->phone;
+
+                    $table->trans_id     = random_int(11111111,99999999);
                     $table->email        = auth()->user()->email;
                     $table->bank         = $request->session()->get('bank');
                     $table->account_no   = $request->session()->get('account_no');
@@ -123,16 +123,12 @@ class WalletController extends Controller
                     $table->status       = 'pending';
                     $table->save();
 
-                    // $timer            = new Timer;
-                    // $timer->user_id   = auth()->user()->id;
-                    // $timer->date      = Carbon::today();
-                    // $timer->save();
-
                     Nairawallet::where('user_id',auth()->user()->id)->decrement('amount',$request->session()->get('a'));
 
                     DB::table('transactions')->insert([
                         'user_id'  => auth()->user()->id,
-                        'order_id' => random_int(1111111111,9999999999),
+                        'email'  => auth()->user()->email,
+                        'order_id' => random_int(11111111,99999999),
                         'type'     => 'wallet',
                         'reason'   => 'withdrawal',
                         'amount'   =>  $request->session()->get('a'),

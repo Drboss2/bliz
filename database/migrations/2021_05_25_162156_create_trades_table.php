@@ -24,6 +24,8 @@ class CreateTradesTable extends Migration
             $table->string('denomination');
             $table->string('expected_amount');
             $table->string('status');
+            $table->string('admin');
+            $table->string('admin_id');
             $table->timestamps();
         });
     }

@@ -32,7 +32,7 @@ class TradeController extends Controller
         $amount = $data[0]->expected_amount;
 
         Nairawallet::where('user_id',$user_id)->increment('amount',$amount);
-        Trade::where('id',$id)->update(['status'=>'paid']);
+        Trade::where('id',$id)->update(['status'=>'paid','admin'=>auth()->user()->name,'admin_id'=>auth()->user()->id]);
         $u = User::where('id',$user_id)->get();
 
         $user           = new Transactions;
@@ -57,7 +57,7 @@ class TradeController extends Controller
         $user_id = $data[0]->user_id;
         $u = User::where('id',$user_id)->get();
 
-        $user = Trade::where('id',$id)->update(['status'=>'failed']);
+        $user = Trade::where('id',$id)->update(['status'=>'failed','admin'=>auth()->user()->name,'admin_id'=>auth()->user()->id]);
 
         $data = array(
             'm'=> $u[0]->name. ' Your Trade was Declined'

@@ -39,28 +39,40 @@
                 </div>
             </div>
             <div class="row mb-3">
-                <div id="pro1" class="col-lg-4 col-sm-4 col-4 text-center" >
-                    <div class='bg-primary p-3 text-bold' style="border-radius:10px;font-size:16px;">
+                <div  class="col-lg-4 col-sm-4 col-4 text-center" >
+                    <div id="click1" class='p-3 text-bold custom' style="border-radius:10px;font-size:16px;">
                         Naira  Wallet
                     </div>
                 </div>
-                <div id="pro1" class="col-lg-4 col-sm-4 col-4 text-center">
-                    <div class='bg-primary p-3 text-bold'style="border-radius:10px;font-size:16px;">
+                <div  class="col-lg-4 col-sm-4 col-4 text-center">
+                    <div id="click2" class='white p-3 text-bold custom'style="border-radius:10px;font-size:16px;">
                         Bitcoin  Wallet
                     </div>
                 </div>
-                <div id="pro1" class="col-lg-4 col-sm-4 col-4 text-center">
-                    <div class='bg-default p-3 text-bold'  style="border-radius:10px;font-size:16px;background:white">
+                <div  class="col-lg-4 col-sm-4 col-4 text-center">
+                    <div id="click3"class='white p-3 text-bold custom' style="border-radius:10px;font-size:16px;">
                         Ethereum Wallet
                     </div>
                 </div>
                 <div class="col-lg-12 mt-3">
                     <div class="card">
-                        <div class="card-body">
-                          <button class="btn btn-primary btn-block text-center">View Bitcoin Wallet</button>
+                        <div id="pro1" class="card-body">
+                          <button class="btn btn-primary btn-block text-center custom" style="border-radius:10px;font-size:16px;">View Naira Wallet Wallet</button>
                              <hr>
-                            <span style="font-size:17px;font-weight:bolder">Address :</span><span style='style="font-size:17px;font-weight:bolder'> bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh </span> <a href="javascript:void(0)"><span class="far fa-copy far-lg"></span></a><br>
-                            <span style="font-size:17px;font-weight:bolder">Balance :</span>BTC<span style="font-size:17px;font-weight:bolder;color:green">0.000($0.00)</span>
+                            <span style="font-size:18px;font-weight:bolder">Balance:</span><span style="font-size:16px;font-weight:bolder;color:green">₦{{number_format(auth()->user()->wallet->amount, 1, '.', ',')}}</span>
+                        </div>
+                        <div id="pro2" class="card-body">
+                          <button class="btn btn-primary btn-block text-center custom" style="border-radius:10px;font-size:16px;">Create Bitcoin Wallet</button>
+                             <hr>
+
+                                <!-- <span style="font-size:17px;font-weight:bolder">Address :</span><span style='style="font-size:17px;font-weight:bolder'> bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh </span> <a href="javascript:void(0)"><span class="far fa-copy far-lg"></span></a><br>
+                                <span style="font-size:17px;font-weight:bolder">Balance :</span>BTC<span style="font-size:17px;font-weight:bolder;color:green">0.000($0.00)</span> -->
+                        </div>
+                         <div id="pro3" class="card-body">
+                          <button class="btn btn-primary btn-block text-center custom" style="border-radius:10px;font-size:16px;">Create Ethereum Wallet</button>
+                             <hr>
+                            <!-- <span style="font-size:17px;font-weight:bolder">Address :</span><span style='style="font-size:17px;font-weight:bolder'> bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh </span> <a href="javascript:void(0)"><span class="far fa-copy far-lg"></span></a><br>
+                            <span style="font-size:17px;font-weight:bolder">Balance :</span>BTC<span style="font-size:17px;font-weight:bolder;color:green">0.000($0.00)</span> -->
                         </div>
                     </div>
                 </div>
@@ -224,4 +236,72 @@
         color:#32325d;
     }
 </style>
+
+<script>
+    $(document).ready(function(){
+        $("#pro2").hide()
+        $("#pro3").hide()
+        $("#click1").addClass("btn-primary");
+
+        $("#click1").click(function(){
+            $("#pro1").show();
+            $("#pro2").hide()
+            $("#pro3").hide()
+            $("#click1").addClass("btn-primary");
+            $("#click1").removeClass("white");
+
+            $("#click2").removeClass("btn-primary");
+            $("#click2").addClass("white");
+            $("#click3").removeClass("btn-primary");
+            $("#click3").addClass("white");
+        })
+        $("#click2").click(function(){
+            $("#pro1").hide();
+            $("#pro2").show()
+            $("#pro3").hide()
+
+            $("#click1").addClass("white");
+            $("#click1").removeClass("btn-primary");
+
+            $("#click2").addClass("btn-primary");
+            $("#click2").removeClass("white");
+            
+            $("#click3").removeClass("btn-primary");
+            $("#click3").addClass("white");
+        })
+        $("#click3").click(function(){
+            $("#pro1").hide();
+            $("#pro2").hide()
+            $("#pro3").show()
+
+            $("#click1").addClass("white");
+            $("#click1").removeClass("btn-primary");
+
+          
+            
+            $("#click2").removeClass("btn-primary");
+            $("#click2").addClass("white");
+
+            $("#click3").addClass("btn-primary");
+            $("#click3").removeClass("white");
+        })
+
+
+        $(window).on('load',function(){
+            $.get('https://api.coinbase.com/v2/prices/BTC-USD/spot',function(data,status){
+                if(status === 'success'){
+                    console.log(data)
+                }
+            })
+            .fail(function(err){
+                console.log(err)
+            })
+            
+        })
+    })
+
+
+
+
+</script>
   @endsection  

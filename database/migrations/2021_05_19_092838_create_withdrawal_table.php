@@ -17,12 +17,15 @@ class CreateWithdrawalTable extends Migration
             $table->id();
             $table->integer('trans_id');
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->string('phone');
             $table->string('email');
             $table->string('bank');
             $table->string('account_no');
             $table->string('account_name');
             $table->string('amount');
             $table->string('status');
+            $table->string('admin');
+            $table->string('admin_id');
             $table->timestamps();
         });
     }

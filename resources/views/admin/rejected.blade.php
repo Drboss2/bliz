@@ -41,6 +41,7 @@
                                             <th scope="col">Rate</th>
                                             <th scope="col">Expected amount</th>
                                             <th scope="col">Status</th>
+                                            <th scope="col">Rejected By</th>
                                             <th scope="col">Rejected At</th>
                                         </tr>
                                     </thead>
@@ -56,6 +57,7 @@
                                                     <td>₦{{$val->price}}</td>
                                                     <td>₦{{number_format($val->expected_amount,2,'.',',')}}</td>
                                                     <td><a class='text-red' href="">{{$val->status}}</a></td>
+                                                    <td>{{$val->admin}}</td>
                                                     <td>{{$val->updated_at}}</td>
                                                 </tr>
                                             @endforeach
